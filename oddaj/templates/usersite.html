@@ -46,7 +46,7 @@
         <td>{{ donation.pick_up_date }} {{ donation.pick_up_time }}</td>
         <td>{{ donation.pick_up_comment }}</td>
         {% if donation.is_taken %}
-            <th><button name="is_taken" type="submit" value="{{ donation.id }}" disabled>Potwierdź</button></th>
+            <th><button name="is_taken" type="submit" value="{{ donation.id }}">Anuluj</button></th>
             {% else %}
             <th><button name="is_taken" type="submit" value="{{ donation.id }}">Potwierdź</button></th>
         {% endif %}

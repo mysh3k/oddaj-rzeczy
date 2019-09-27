@@ -125,9 +125,11 @@ class UserSite(View):
 
     def post(self,request):
         confirmation = request.POST.get('is_taken')
-        print(confirmation)
         donate = Donation.objects.get(id=confirmation)
-        donate.is_taken = True
+        if donate.is_taken == False:
+            donate.is_taken = True
+        elif donate.is_taken == True:
+            donate.is_taken = False
         donate.save()
         return HttpResponseRedirect('/user/')
 
