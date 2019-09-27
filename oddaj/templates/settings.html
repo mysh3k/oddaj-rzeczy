@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    </header>
+
+    <section class="login-page">
+
+    <p>Edytowanie danych</p>
+        <form method="post" action="/settings/">
+            {% csrf_token %}
+    <table>
+        <tr>
+            <td>Imię:</td>
+            <td><input type="text" name="name" value="{{ username.first_name }}"/></td>
+        </tr>
+        <tr>
+            <td>Nazwisko:</td>
+            <td><input type="text" name="surname" value="{{ username.last_name }}"/></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" name="email" value="{{ username.email }}"/></td>
+        </tr>
+        <tr>
+            <td>Hasło:</td>
+            <td><input type="password" name="password"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button name="changedata" type="submit" value="{{ username }}">Potwierdź</button></td>
+        </tr>
+    </table>
+        </form>
+
+    <br>
+    <p>Zmiana hasła:</p>
+        <form method="post" action="/settings/">
+            {% csrf_token %}
+    <table>
+        <tr>
+            <td>Aktualne hasło:</td>
+            <td><input type="password" name="current_password"/></td>
+        </tr>
+        <tr>
+            <td>Nowe hasło:</td>
+            <td><input type="password" name="new_password"/></td>
+        </tr>
+        <tr>
+            <td>Powtórz hasło:</td>
+            <td><input type="password" name="repeat_password"/></td>
+        </tr>
+        <td></td>
+            <td><button name="changepassword" type="submit" value="{{ username }}">Potwierdź</button></td>
+    </table>
+            </form>
+    </section>
+
+{% endblock %}

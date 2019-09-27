@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+    </header>
+
+    <section class="login-page">
+      <h2>Twoje dane:</h2>
+
+        <div class="form-group">
+            <p>Imię: {{ username.first_name }}</p>
+        </div>
+        <div class="form-group">
+            <p>Nazwisko: {{ username.last_name }} </p>
+        </div>
+                <div class="form-group">
+            <p>Email: {{ username.email }} </p>
+        </div>
+    <br>
+    <p>Przekazane dary</p>
+
+    <table border="1">
+    <tr>
+        <th>Adres</th>
+        <th>Miasto</th>
+        <th>Kod pocztowy</th>
+        <th>Numer telefonu</th>
+        <th>Liczba worków</th>
+        <th>Rodzaj darowizny</th>
+        <th>Data odbioru</th>
+        <th>Komentarz</th>
+        <th>Potwierdzenie odbioru</th>
+    </tr>
+    {% for donation in donations %}
+        <form method="post" action="/user/">
+        {% csrf_token %}
+        {% if donation.is_taken %}
+        <tr style="color: #737373">
+        {% else %}
+        <tr>
+        {% endif %}
+        <td>{{ donation.address }}</td>
+        <td>{{ donation.city }}</td>
+        <td>{{ donation.zip_code }}</td>
+        <td>{{ donation.phone_number }}</td>
+        <td>{{ donation.quanity }}</td>
+        <td>{% for x in donation.categories.all %}{{ x.name }}<br>{% endfor %}</td>
+        <td>{{ donation.pick_up_date }} {{ donation.pick_up_time }}</td>
+        <td>{{ donation.pick_up_comment }}</td>
+        {% if donation.is_taken %}
+            <th><button name="is_taken" type="submit" value="{{ donation.id }}" disabled>Potwierdź</button></th>
+            {% else %}
+            <th><button name="is_taken" type="submit" value="{{ donation.id }}">Potwierdź</button></th>
+        {% endif %}
+        </tr>
+        </form>
+    {% endfor %}
+
+    </table>
+
+
+
+
+    </section>
+
+{% endblock %}
