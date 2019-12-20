@@ -1,5 +1,10 @@
 Projekt aplikacji webowej dla fundacji dobroczynnej, zbierającej datki w postaci paczek np. z jedzeniem od dobroczyńców i przekazywanie ich na rzecz wybranej przez nich fundacji  
 
+Wykorzystane technologie:
+-Python  
+-Django  
+-PostgreSQL  
+
 Funkcjonalności:  
 -Rejestracja i logowanie użytkowników  
 -Dynamiczny formularz przekazywania darów  
