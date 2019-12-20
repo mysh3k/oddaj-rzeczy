@@ -4,6 +4,7 @@ Wykorzystane technologie:
 -Python  
 -Django  
 -PostgreSQL  
+-JavaScript  
 
 Funkcjonalności:  
 -Rejestracja i logowanie użytkowników  
